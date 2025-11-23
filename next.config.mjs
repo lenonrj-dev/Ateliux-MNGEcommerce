@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+﻿/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   compress: true,
@@ -16,6 +16,7 @@ const nextConfig = {
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "i.imgur.com" },
       { protocol: "https", hostname: "img.freepik.com" },
+      { protocol: "https", hostname: "staticmap.openstreetmap.de" },
     ],
     formats: ["image/avif", "image/webp"],
   },

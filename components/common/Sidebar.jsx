@@ -40,7 +40,7 @@ export default function Sidebar() {
       {/* Header */}
       <div className="h-16 flex items-center gap-3 px-4 border-b border-slate-200">
         <Image
-          src="/ateliux-logo.svg"
+          src="/AteliuxCleanWhite.svg"
           alt="Ateliux"
           width={28}
           height={28}

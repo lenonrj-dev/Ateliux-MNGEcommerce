@@ -1,5 +1,5 @@
 ﻿<div align="center">
-  <h1 style="border-bottom: none;">🍽️ Ateliux Demo Ecommerce Dashboard</h1>
+  <h1>Ateliux Demo Ecommerce Dashboard</h1>
   <p><strong>Versão 0.3.0</strong> · Projeto #3 online · Next.js 15 + React 19 · Deploy otimizado para Vercel</p>
   <p>
     <img src="https://img.shields.io/badge/Next.js-15.5-black?logo=next.js" />
@@ -9,10 +9,10 @@
   </p>
 </div>
 
-## 🔥 O que é
-Painel administrativo de ecommerce de comida brasileira, pronto para demos e deploy imediato na Vercel. Inclui KPIs, pedidos, produtos, clientes, entregadores, lojas e categorias — tudo em pt-BR, com dados mockados realistas e animações suaves.
+## O que é
+Painel administrativo de ecommerce de comida brasileira, pronto para demos e deploy imediato na Vercel. Inclui KPIs, pedidos, produtos, clientes, entregadores, lojas e categorias — tudo em pt-BR, com dados mock realistas, animações suaves e mapa de entregas em modo produção (Centro de Volta Redonda/RJ).
 
-## 🗺️ Mapa do projeto
+## Mapa do projeto
 ```
 app/
  ├─ layout.js           // Layout root (pt-BR, tema claro)
@@ -50,14 +50,16 @@ config:
  └─ package.json        // Scripts: dev/build/start/lint
 ```
 
-## ✅ Alterações recentes (datadas)
+## Alterações recentes (datadas)
+- 2025-11-25 — Seletor de idioma funcional (persiste no perfil) e dropdown sem setas duplicadas; notificações sobre fundo branco e z-index alto para não serem encobertas.
+- 2025-11-24 — Mapa de entregas em produção real, centralizado no Centro de Volta Redonda/RJ com mapa estático OSM e marcadores operacionais.
 - 2025-11-23 — Readme revitalizado, versão 0.3.0 e mapeamento completo do projeto.
 - 2025-11-23 — Correção de BOM em arquivos e lint zerado.
 - 2025-11-23 — Deploy-hardened: Next config com `output: "standalone"`, compress, imagens AVIF/WEBP e import otimizado de `lucide-react`; scripts sem Turbopack para builds previsíveis na Vercel.
-- 2025-11-22 — Dashboard totalmente brasileira (dados, moedas, nomes, endereços) e charts/mapa carregados via `next/dynamic` com skeletons.
+- 2025-11-22 — Dashboard brasileira (dados, moedas, nomes, endereços) e charts/mapa carregados via `next/dynamic` com skeletons.
 - 2025-11-22 — Ajustes de acessibilidade, hidratação e UX (skeleton global, badges em pt-BR, tooltips e filtros).
 
-## 🚀 Como rodar
+## Como rodar
 ```bash
 npm install
 npm run dev     # ambiente local
@@ -66,11 +68,11 @@ npm run build   # build de produção (standalone pronto p/ Vercel)
 npm run start   # servir build
 ```
 
-## 🌐 Deploy na Vercel
+## Deploy na Vercel
 - Output: `.next` (standalone), Node 18+.
 - Scripts: `npm run build` / `npm run start`.
-- Imagens remotas liberadas (Unsplash, Cloudinary, pravatar, etc.) com AVIF/WEBP.
+- Imagens remotas liberadas (Unsplash, Cloudinary, pravatar, OSM static map, etc.) com AVIF/WEBP.
 
 <div align="center">
-  <sub>Feito com ☕️ + código limpo. Surpreenda no GitHub com uma dashboard brasileira, rápida e pronta para produção.</sub>
+  <sub>Feito com café + código limpo. Surpreenda no GitHub com uma dashboard brasileira, rápida e pronta para produção.</sub>
 </div>

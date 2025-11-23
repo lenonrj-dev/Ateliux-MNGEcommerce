@@ -1,4 +1,4 @@
-// components/Topbar.jsx
+﻿// components/Topbar.jsx
 "use client";
 
 import Link from "next/link";
@@ -37,7 +37,7 @@ const NOTIFICATIONS = [
 
 export default function Topbar() {
   const reduce = useReducedMotion();
-  const { profile } = useUserProfile();
+  const { profile, updateProfile } = useUserProfile();
   const [open, setOpen] = useState(false);
   const popoverRef = useRef(null);
 
@@ -79,16 +79,27 @@ export default function Topbar() {
         </motion.div>
 
         {/* Idioma / preferências */}
-        <motion.button
-          type="button"
-          className="inline-flex items-center gap-1 rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500/30 shadow-sm"
+        <motion.label
+          className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 focus-within:ring-2 focus-within:ring-blue-500/30 shadow-sm"
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduce ? 0 : 0.2, ease: "easeOut", delay: reduce ? 0 : 0.04 }}
-          aria-label={`Idioma atual: ${languageLabel}`}
         >
-          {languageLabel} <ChevronDown size={14} aria-hidden="true" />
-        </motion.button>
+          <span className="sr-only">Selecionar idioma</span>
+          <select
+            value={profile.language}
+            onChange={(e) => updateProfile({ language: e.target.value })}
+            className="bg-transparent text-sm text-slate-700 focus:outline-none pr-5 appearance-none"
+            aria-label={`Idioma atual: ${languageLabel}`}
+          >
+            {Object.entries(LANG_LABEL).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+          <ChevronDown size={14} aria-hidden="true" className="pointer-events-none" />
+        </motion.label>
 
         {/* Notificações */}
         <div className="relative" ref={popoverRef}>
@@ -116,15 +127,15 @@ export default function Topbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="absolute right-0 mt-2 w-80 rounded-2xl border border-slate-200 bg-white shadow-xl ring-1 ring-slate-100 overflow-hidden"
+              className="absolute right-0 mt-2 w-80 rounded-2xl border border-slate-200 bg-white shadow-xl ring-1 ring-slate-100 overflow-hidden z-50"
             >
-              <div className="px-4 py-3 border-b border-slate-200 bg-gradient-to-r from-blue-50 to-slate-50">
+              <div className="px-4 py-3 border-b border-slate-200 bg-white">
                 <div className="text-sm font-semibold text-slate-900">Notificações</div>
                 <div className="text-xs text-slate-500">Atualizado automaticamente</div>
               </div>
-              <ul className="divide-y divide-slate-200">
+              <ul className="divide-y divide-slate-200 bg-white">
                 {NOTIFICATIONS.map((n, idx) => (
-                  <li key={idx} className="px-4 py-3 hover:bg-slate-50">
+                  <li key={idx} className="px-4 py-3 bg-white hover:bg-slate-50">
                     <div className="flex items-start gap-3">
                       <BadgeIcon type={n.type} />
                       <div className="space-y-1">
@@ -139,7 +150,7 @@ export default function Topbar() {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="w-full text-center text-sm text-blue-700 py-2 hover:bg-blue-50"
+                className="w-full text-center text-sm text-blue-700 py-2 bg-white hover:bg-blue-50"
               >
                 Marcar como lidas
               </button>
