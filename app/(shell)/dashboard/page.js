@@ -1,17 +1,37 @@
 // app/(shell)/dashboard/page.jsx
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "framer-motion";
 import CardsRow from "../../../components/dashboard/Cards";
-import {
-  RevenueChart,
-  OrdersChart,
-  CustomersChart,
-} from "../../../components/dashboard/Charts";
-import DeliveryMap from "../../../components/dashboard/DeliveryMap";
 import Timeline from "../../../components/dashboard/Timeline";
 import RecentOrders from "../../../components/dashboard/RecentOrders";
 import Trending from "../../../components/dashboard/Trending";
+
+const RevenueChart = dynamic(
+  () => import("../../../components/dashboard/Charts").then((m) => m.RevenueChart),
+  { ssr: false, loading: () => <ChartSkeleton /> }
+);
+const OrdersChart = dynamic(
+  () => import("../../../components/dashboard/Charts").then((m) => m.OrdersChart),
+  { ssr: false, loading: () => <ChartSkeleton /> }
+);
+const CustomersChart = dynamic(
+  () => import("../../../components/dashboard/Charts").then((m) => m.CustomersChart),
+  { ssr: false, loading: () => <ChartSkeleton /> }
+);
+const DeliveryMap = dynamic(
+  () => import("../../../components/dashboard/DeliveryMap"),
+  { ssr: false, loading: () => <MapSkeleton /> }
+);
+
+function ChartSkeleton() {
+  return <div className="h-48 rounded-xl bg-slate-100 animate-pulse" />;
+}
+
+function MapSkeleton() {
+  return <div className="h-72 w-full rounded-2xl border border-slate-200 bg-slate-100 animate-pulse" />;
+}
 
 // Card shell reutilizável para padronizar UI e acessibilidade
 function Card({ title, children, regionId, className = "" }) {
@@ -133,7 +153,7 @@ export default function DashboardPage() {
       {/* Pedidos recentes — ocupa toda a base */}
       <motion.div variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}>
         <Card title="Pedidos recentes" regionId="pedidos-recentes">
-          <RecentOrders /> {/* o componente já tem padding interno */}
+          <RecentOrders />
         </Card>
       </motion.div>
     </motion.div>
