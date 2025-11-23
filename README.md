@@ -1,5 +1,5 @@
 ﻿<div align="center">
-  <h1 style="border-bottom: none;">🍽️ Ateliux Demo Ecommerce Dashboard</h1>
+  <h1 style="border-bottom: none;">Ateliux Demo Ecommerce Dashboard</h1>
   <p><strong>Versão 0.3.0</strong> · Projeto #3 online · Next.js 15 + React 19 · Deploy otimizado para Vercel</p>
   <p>
     <img src="https://img.shields.io/badge/Next.js-15.5-black?logo=next.js" />
